@@ -22,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Dmitry Kokotov
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Disabled
 public class DesignTacoControllerBrowserTest {
 
     private static ChromeDriver browser;

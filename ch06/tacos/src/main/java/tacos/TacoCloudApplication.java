@@ -19,15 +19,10 @@ public class TacoCloudApplication {
 	}
 
 	@Bean
-	ErrorViewResolver supportPathBasedLocalStrategyWithoutHashes(){
-		return new ErrorViewResolver() {
-			@Override
-			public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status, Map<String, Object> model) {
-				return status == HttpStatus.NOT_FOUND
-						? new ModelAndView("index.html", Collections.<String, Object>emptyMap(), HttpStatus.OK)
-						: null;
-			}
-		};
+	ErrorViewResolver supportPathBasedLocationStrategyWithoutHashes(){
+		return (request, status, model) -> status == HttpStatus.NOT_FOUND
+				? new ModelAndView("index.html", Collections.<String, Object>emptyMap(), HttpStatus.OK)
+				: null;
 
 	}
 

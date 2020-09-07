@@ -12,7 +12,7 @@ import tacos.data.IngredientRepository;
  * @author Dmitry Kokotov
  */
 @RestController
-@RequestMapping(path = "/ingredientsx", produces = "applicaton/json")
+@RequestMapping(path = "/ingredientsx", produces = "application/json")
 @CrossOrigin(origins = "*")
 public class IngredientController {
     private IngredientRepository ingredientRepository;
