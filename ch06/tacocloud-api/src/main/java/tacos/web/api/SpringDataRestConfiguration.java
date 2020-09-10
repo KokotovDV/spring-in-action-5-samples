@@ -13,14 +13,14 @@ import tacos.Taco;
  */
 @Configuration
 public class SpringDataRestConfiguration {
-    @Bean
-    public RepresentationModelProcessor<PagedModel<EntityModel<Taco>>> tacoProcessor(EntityLinks links) {
-        return model -> {
-            model.add(
-                    links.linkFor(Taco.class)
-                            .slash("recent")
-                            .withRel("recents"));
-            return model;
-        };
-    }
+//    @Bean
+//    public RepresentationModelProcessor<EntityModel<Taco>> tacoProcessor(EntityLinks links) {
+//        return model -> {
+//            model.add(
+//                    links.linkFor(Taco.class)
+//                            .slash("recent")
+//                            .withRel("recents"));
+//            return model;
+//        };
+//    }
 }
