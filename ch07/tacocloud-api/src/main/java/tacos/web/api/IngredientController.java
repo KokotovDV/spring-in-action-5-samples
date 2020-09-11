@@ -1,0 +1,59 @@
+package tacos.web.api;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import tacos.Ingredient;
+import tacos.data.IngredientRepository;
+
+import java.net.URI;
+import java.util.Optional;
+
+/**
+ * @author Dmitry Kokotov
+ */
+@RestController
+@RequestMapping(path = "/ingredients", produces = "application/json")
+@CrossOrigin(origins = "*")
+public class IngredientController {
+    private IngredientRepository ingredientRepository;
+
+    @Autowired
+    public IngredientController(IngredientRepository ingredientRepository) {
+        this.ingredientRepository = ingredientRepository;
+    }
+
+    @GetMapping
+    public Iterable<Ingredient> allIngredients() {
+        return ingredientRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Ingredient> byId(@PathVariable String id){
+        return ingredientRepository.findById(id);
+    }
+
+    @PutMapping("/{id}")
+    public void updateIngredient(@PathVariable String id, @RequestBody Ingredient ingredient){
+        if(!id.equals(ingredient.getId())){
+            throw new IllegalStateException("Given ingredient's ID does not match the ID in the path.");
+        }
+        ingredientRepository.save(ingredient);
+    }
+
+    @PostMapping("/{id}")
+    public ResponseEntity<Ingredient> postIngredient(@RequestBody Ingredient ingredient){
+        Ingredient createdIngredient = ingredientRepository.save(ingredient);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(URI.create("Http://localhost:8080/api/ingredients/" + ingredient.getId()));
+        return new ResponseEntity<>(createdIngredient, headers, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deteleIngredient(@PathVariable String id){
+        ingredientRepository.deleteById(id);
+    }
+
+}
