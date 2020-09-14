@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 /**
  * @author Dmitry Kokotov
@@ -29,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers(HttpMethod.OPTIONS).permitAll() // needed for Angular/CORS
-                    .antMatchers(HttpMethod.POST).permitAll()
+                    .antMatchers(HttpMethod.POST, "/api/ingredients").permitAll()
                     .antMatchers("/design", "/orders/**")
                         .permitAll()
                         //.access("hasRole('ROLE_USER')")

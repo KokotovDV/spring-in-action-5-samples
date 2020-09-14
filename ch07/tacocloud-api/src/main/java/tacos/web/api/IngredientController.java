@@ -43,7 +43,7 @@ public class IngredientController {
         ingredientRepository.save(ingredient);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping
     public ResponseEntity<Ingredient> postIngredient(@RequestBody Ingredient ingredient){
         Ingredient createdIngredient = ingredientRepository.save(ingredient);
         HttpHeaders headers = new HttpHeaders();
