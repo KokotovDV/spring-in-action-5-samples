@@ -1,7 +1,7 @@
 # Taco Cloud 0.0.9
 
 
-This folder contains the source code for the Taco Cloud sample from Spring in Action, 5th edition, as presented in Chapter 6.
+This folder contains the source code for the Taco Cloud sample from Spring in Action, 5th edition, as presented in Chapter 9.
 
 # Taco Cloud modules
 
