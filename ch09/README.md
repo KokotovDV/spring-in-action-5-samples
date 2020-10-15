@@ -20,3 +20,9 @@ The multi-module Maven project is made up of the following modules:
  - `tacocloud-ui` : A Typescript Angular UI
  - `tacocloud-web` : The web module (largely leftovers from previous chapters. TODO: Clean up and remove.)
  - `tacos` : The main module that pulls the other modules together and provides the Spring Boot main class.
+
+Home page example:
+![alt text](../screenshots/home.jpg "Home page")
+
+Design page example:
+![alt text](../screenshots/design.jpg "design page")
